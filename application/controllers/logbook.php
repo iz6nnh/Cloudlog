@@ -25,8 +25,10 @@ class Logbook extends CI_Controller {
 		$config['total_rows'] = $this->db->count_all($this->config->item('table_name'));
 		$config['per_page'] = '25';
 		$config['num_links'] = 6;
-		$config['full_tag_open'] = '<p>';
-		$config['full_tag_close'] = '</p>';
+		$config['full_tag_open'] = '';
+		$config['full_tag_close'] = '';
+		$config['cur_tag_open'] = '<strong class="active"><a href="">';
+		$config['cur_tag_close'] = '</a></strong>';
 	
 		$this->pagination->initialize($config);
 	
