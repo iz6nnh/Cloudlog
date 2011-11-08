@@ -140,6 +140,7 @@ class Logbook extends CI_Controller {
 	
 		if ($query->num_rows() > 0)
 		{
+			echo "<h2>QSOs Matches with ".strtoupper($id)."</h2>";
 			echo "<table class=\"partial\" width=\"100%\">";
 				echo "<tr>";
 					echo "<td>Date</td>";
