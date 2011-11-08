@@ -119,6 +119,14 @@ class Logbook extends CI_Controller {
 			echo $callbook['gridsquare'];
 		}
 	}
+
+	function callsign_qth($callsign) {
+		$this->load->library('callbytxt');
+		
+		$callbook = $this->callbytxt->callsign($callsign);
+
+		echo $callbook['city'];
+	}
 	
 	function callsign_name($callsign) {
 		$this->load->model('user_model');
