@@ -109,7 +109,15 @@ class Logbook extends CI_Controller {
 
 		$this->load->model('logbook_model');
 
-		echo $this->logbook_model->call_qra($qra);
+		if($this->logbook_model->call_qra($qra)) {
+			echo $this->logbook_model->call_qra($qra);
+		} else {
+			$this->load->library('callbytxt');
+		
+			$callbook = $this->callbytxt->callsign($callsign);
+
+			echo $callbook['gridsquare'];
+		}
 	}
 	
 	function callsign_name($callsign) {
@@ -118,16 +126,15 @@ class Logbook extends CI_Controller {
 
 		$this->load->model('logbook_model');
 
-		echo $this->logbook_model->call_name($callsign);
-	}
-	
-	function test($callsign) {
-		$json = file_get_contents("http://callbytxt.org/db/".$callsign.".json");
+		if($this->logbook_model->call_name($callsign) != null) {
+			echo $this->logbook_model->call_name($callsign);
+		} else {
+			$this->load->library('callbytxt');
 		
-		$obj = json_decode($json);
-		
-		$uppercase_name = strtolower($obj->{'calls'}->{'first_name'});
-		echo ucwords($uppercase_name);
+			$callbook = $this->callbytxt->callsign($callsign);
+
+			echo $callbook['name'];
+		}
 	}
 	
 	function partial($id) {
