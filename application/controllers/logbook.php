@@ -114,7 +114,7 @@ class Logbook extends CI_Controller {
 		} else {
 			$this->load->library('callbytxt');
 		
-			$callbook = $this->callbytxt->callsign($callsign);
+			$callbook = $this->callbytxt->callsign($qra);
 
 			echo $callbook['gridsquare'];
 		}
