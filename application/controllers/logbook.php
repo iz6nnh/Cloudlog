@@ -209,7 +209,12 @@ class Logbook extends CI_Controller {
 					echo "<td>".$row->COL_CALL."</td>";
 					echo "<td>".$row->COL_RST_SENT."</td>";
 					echo "<td>".$row->COL_RST_RCVD."</td>";
-					echo "<td>".$row->COL_BAND."</td>";
+
+					if($row->COL_SAT_NAME != null) { 
+						echo "<td>".$row->COL_SAT_NAME."</td>";
+					} else {
+						echo "<td>".$row->COL_BAND."</td>";
+					}
 					echo "<td>".$row->COL_MODE."</td>";
 					echo "<td><a class=\"editbox\" href=\"".site_url('qso/edit')."/".$row->COL_PRIMARY_KEY."\" ><img src=\"".base_url()."/images/application_edit.png\" width=\"16\" height=\"16\" alt=\"Edit\" /></a></td>";
 				echo "</tr>";
