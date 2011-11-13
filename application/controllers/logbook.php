@@ -2,12 +2,6 @@
 
 class Logbook extends CI_Controller {
 
-	/*
-	
-		TODO List:
-			- Search Option
-	*/
-
 	function index()
 	{
         $this->load->model('user_model');
@@ -237,21 +231,20 @@ class Logbook extends CI_Controller {
 			}
 	}
 	
+	/* return station bearing */
 	function bearing() {
-		
 			$this->load->library('Qra');
 			
-			
 			if($this->uri->segment(3) != null) {
-			if($this->session->userdata('user_locator') != null){
-				$mylocator = $this->session->userdata('user_locator');
-			} else {
-				$mylocator = $this->config->item('locator');
-			}
+				if($this->session->userdata('user_locator') != null){
+					$mylocator = $this->session->userdata('user_locator');
+				} else {
+					$mylocator = $this->config->item('locator');
+				}
 
-			$bearing = $this->qra->bearing($mylocator, $this->uri->segment(3));
+				$bearing = $this->qra->bearing($mylocator, $this->uri->segment(3));
 	
-			echo $bearing;
+				echo $bearing;
 			}
 	} 
 }
