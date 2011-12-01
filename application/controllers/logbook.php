@@ -176,7 +176,11 @@ class Logbook extends CI_Controller {
 			}
 			echo "</table>";
 		} else {
-			echo "Unique Callsign: ".strtoupper($id);
+				$this->load->library('Callbytxt');
+				$data['callsign'] = $this->callbytxt->callsign($id);
+				$data['id'] = strtoupper($id);
+
+				$this->load->view('search/result', $data);
 		}
 	}
 	
@@ -219,7 +223,11 @@ class Logbook extends CI_Controller {
 			}
 			echo "</table>";
 		} else {
-			echo "Unique Callsign: ".strtoupper($id);
+				$this->load->library('Callbytxt');
+				$data['callsign'] = $this->callbytxt->callsign($id);
+				$data['id'] = strtoupper($id);
+
+				$this->load->view('search/result', $data);
 		}
 	}
 	
