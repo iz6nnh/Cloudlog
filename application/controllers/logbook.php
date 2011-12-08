@@ -218,7 +218,11 @@ class Logbook extends CI_Controller {
 						echo "<td>".$row->COL_BAND."</td>";
 					}
 					echo "<td>".$row->COL_MODE."</td>";
-					echo "<td><a class=\"editbox\" href=\"".site_url('qso/edit')."/".$row->COL_PRIMARY_KEY."\" ><img src=\"".base_url()."/images/application_edit.png\" width=\"16\" height=\"16\" alt=\"Edit\" /></a></td>";
+					if($this->user_model->authorize(2)) {
+						echo "<td><a class=\"editbox\" href=\"".site_url('qso/edit')."/".$row->COL_PRIMARY_KEY."\" ><img src=\"".base_url()."/images/application_edit.png\" width=\"16\" height=\"16\" alt=\"Edit\" /></a></td>";
+					} else {
+						echo "<td></td>";
+					}
 				echo "</tr>";
 			}
 			echo "</table>";
