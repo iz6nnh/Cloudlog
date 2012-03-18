@@ -48,7 +48,10 @@ class PasswordHash {
 	function get_random_bytes($count)
 	{
 		$output = '';
-		if (is_readable('/dev/urandom') &&
+		if (@is_readable('/dev/urandom') &&  
+		#if (is_readable('/dev/urandom') && Whitout "@" some web-hosting go to is_readable 
+		#error because you cannot access directly /dev/* files. It's a security throuble who happen to me 
+		#so I fixed
 		    ($fh = @fopen('/dev/urandom', 'rb'))) {
 			$output = fread($fh, $count);
 			fclose($fh);
